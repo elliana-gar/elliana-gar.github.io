@@ -1,8 +1,62 @@
 ---
-title: "Project 1"
-author: "Me"
-date: "2020-12-01"
-output: html_document
+output:
+  html_document: default
+  pdf_document: default
 ---
+```{R}
+library(tidyverse)
+Streaming1<- read_csv("Streaming1.csv")
+Streaming2<- read_csv("Streaming2.csv")
+Streaming3<- read_csv("Streaming3.csv")
+Streaming4<- read_csv("Streaming4.csv")
+NetflixViewingHistory <- read_csv("NetflixViewingHistory.csv")
+Streaming<- Streaming1 %>% full_join(Streaming2)
+Streaming<- Streaming%>% full_join(Streaming3)
+Streaming<- Streaming%>% full_join(Streaming4)
+head(Streaming)
+head(NetflixViewingHistory)
+```
 
-## Test Project 1
+
+Intro: 
+I chose this data because I do a lot of binge watching and I often listen to music, and I thought it would be cool to see how my data would look like all together. 
+The netflix data contained the variables date and Title, and the spotify data had the variables endTime(which was time and date), artist name, track name, and ms played. I downloaded my data off of my Netflix and Spotify accounts and then uploaded them to R. 
+Often times watching things or listening to music is my little escape (that I get way too carried away with). My first year I was all alone and I had moved to a new city so I did A LOT of binge watching. 
+I would expect to see a lot of titles watched in a day for 2017 definitely, and for 2020 I would expect to have more songs listened to than titles watched because I got more into music as a "coping" mechanism, mostly because I did not have the energy to find new shows. 
+
+```{R}
+NetflixViewingHistory$Date <- format(as.Date(NetflixViewingHistory$Date, format ="%m/%d/%y"),"%Y-%m-%d")
+Streaming <-Streaming %>%separate(endTime, into = c("Date","endTime"), sep = " (?=[^ ]+$)")
+
+TtlStrm <- Streaming %>% full_join(NetflixViewingHistory)
+head(TtlStrm)
+
+```
+
+I did a full join because I did not want to lose any data. 
+Streaming had 37,485 observations and NetflixViewingHistory had 2,640 observations. No observations were dropped, but some were duplicated. 
+
+
+```{R}
+TtlStrm<- TtlStrm %>% mutate('time(s)' = msPlayed/1000)
+TtlStrm<- TtlStrm %>% arrange(Date)
+TtlStrm<- TtlStrm%>%separate(Title, into = c("Title","Season"), sep = ":")
+head(TtlStrm)
+
+TtlStrm %>% filter(Date == "2020-09-08") 
+TtlStrm %>% group_by(artistName) %>% count(sort=T)
+TtlStrm %>% group_by(Title) %>% count(sort=T)
+TtlStrm %>% group_by(Date) %>% count(sort=T)
+
+```
+
+```{r}
+
+```
+
+My top artist overall was Mac DeMarco, my most watched show was New Girl, and the day with the most activity was June 8, 2020. 
+
+```{r}
+
+```
+

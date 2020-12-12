@@ -1,0 +1,34 @@
+---
+title: Check this out!
+author: ''
+date: '2020-12-11'
+slug: check-this-out
+categories: []
+tags: []
+description: ''
+---
+
+
+```{r}
+library(reticulate)
+```
+
+```{r}
+quakes<-quakes
+```
+
+
+
+```{python}
+r.quakes.mag.mean()
+```
+
+#new content!!
+
+```{python}
+print('This is some of my art :)')
+```
+
+![](/post/2020-12-11-check-this-out_files/IMG_5980.jpg){width=50%}
+
+![](/post/2020-12-11-check-this-out_files/IMG_1883.jpg){width=50%}

@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="author" content="Elliana" />
+    <meta name="author" content="Elliana Garcia" />
     
     <link rel="shortcut icon" type="image/x-icon" href="../../img/favicon.ico">
-    <title>Project 1</title>
+    <title></title>
     <meta name="generator" content="Hugo 0.79.0" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="../../css/main.css" />
@@ -54,13 +54,13 @@
       <div class="container">
         <div class="blog-post">
           <h3>
-            <strong><a href="../../project/project1/">Project 1</a></strong>
+            <strong><a href="../../project/project1/"></a></strong>
           </h3>
         </div>
  
 <div class="blog-title">
           <h4>
-         December 1, 2020 
+         January 1, 0001 
             &nbsp;&nbsp;
             
           </h4>
@@ -72,9 +72,178 @@
               
 
 
-<div id="test-project-1" class="section level2">
-<h2>Test Project 1</h2>
-</div>
+<pre class="r"><code>library(tidyverse)</code></pre>
+<pre><code>## ── Attaching packages ────────────────────────────────────────────────── tidyverse 1.3.0 ──</code></pre>
+<pre><code>## ✓ ggplot2 3.3.2     ✓ purrr   0.3.4
+## ✓ tibble  3.0.3     ✓ dplyr   1.0.1
+## ✓ tidyr   1.1.1     ✓ stringr 1.4.0
+## ✓ readr   1.3.1     ✓ forcats 0.5.0</code></pre>
+<pre><code>## ── Conflicts ───────────────────────────────────────────────────── tidyverse_conflicts() ──
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()</code></pre>
+<pre class="r"><code>Streaming1&lt;- read_csv(&quot;Streaming1.csv&quot;)</code></pre>
+<pre><code>## Parsed with column specification:
+## cols(
+##   endTime = col_datetime(format = &quot;&quot;),
+##   artistName = col_character(),
+##   trackName = col_character(),
+##   msPlayed = col_double()
+## )</code></pre>
+<pre class="r"><code>Streaming2&lt;- read_csv(&quot;Streaming2.csv&quot;)</code></pre>
+<pre><code>## Parsed with column specification:
+## cols(
+##   endTime = col_datetime(format = &quot;&quot;),
+##   artistName = col_character(),
+##   trackName = col_character(),
+##   msPlayed = col_double()
+## )</code></pre>
+<pre class="r"><code>Streaming3&lt;- read_csv(&quot;Streaming3.csv&quot;)</code></pre>
+<pre><code>## Parsed with column specification:
+## cols(
+##   endTime = col_datetime(format = &quot;&quot;),
+##   artistName = col_character(),
+##   trackName = col_character(),
+##   msPlayed = col_double()
+## )</code></pre>
+<pre class="r"><code>Streaming4&lt;- read_csv(&quot;Streaming4.csv&quot;)</code></pre>
+<pre><code>## Parsed with column specification:
+## cols(
+##   endTime = col_datetime(format = &quot;&quot;),
+##   artistName = col_character(),
+##   trackName = col_character(),
+##   msPlayed = col_double()
+## )</code></pre>
+<pre class="r"><code>NetflixViewingHistory &lt;- read_csv(&quot;NetflixViewingHistory.csv&quot;)</code></pre>
+<pre><code>## Parsed with column specification:
+## cols(
+##   Title = col_character(),
+##   Date = col_character()
+## )</code></pre>
+<pre class="r"><code>Streaming&lt;- Streaming1 %&gt;% full_join(Streaming2)</code></pre>
+<pre><code>## Joining, by = c(&quot;endTime&quot;, &quot;artistName&quot;, &quot;trackName&quot;, &quot;msPlayed&quot;)</code></pre>
+<pre class="r"><code>Streaming&lt;- Streaming%&gt;% full_join(Streaming3)</code></pre>
+<pre><code>## Joining, by = c(&quot;endTime&quot;, &quot;artistName&quot;, &quot;trackName&quot;, &quot;msPlayed&quot;)</code></pre>
+<pre class="r"><code>Streaming&lt;- Streaming%&gt;% full_join(Streaming4)</code></pre>
+<pre><code>## Joining, by = c(&quot;endTime&quot;, &quot;artistName&quot;, &quot;trackName&quot;, &quot;msPlayed&quot;)</code></pre>
+<pre class="r"><code>head(Streaming)</code></pre>
+<pre><code>## # A tibble: 6 x 4
+##   endTime             artistName     trackName       msPlayed
+##   &lt;dttm&gt;              &lt;chr&gt;          &lt;chr&gt;              &lt;dbl&gt;
+## 1 2019-10-11 23:24:00 Hiatus Kaiyote Swamp Thing        13802
+## 2 2019-10-12 21:38:00 Instupendo     Wisp               12751
+## 3 2019-10-13 15:50:00 Erykah Badu    Time&#39;s A Wastin   313677
+## 4 2019-10-13 15:53:00 6ix9ine        GUMMO             157643
+## 5 2019-10-13 15:57:00 Paramore       Still into You    216013
+## 6 2019-10-13 16:00:00 Marian Hill    I Want You        212493</code></pre>
+<pre class="r"><code>head(NetflixViewingHistory)</code></pre>
+<pre><code>## # A tibble: 6 x 2
+##   Title                                                                   Date  
+##   &lt;chr&gt;                                                                   &lt;chr&gt; 
+## 1 American Murder: The Family Next Door                                   10/6/…
+## 2 All Light Will End                                                      10/6/…
+## 3 The Good Place: Season 4: Patty                                         10/6/…
+## 4 The Good Place: Season 4: Mondays, Am I Right?                          10/6/…
+## 5 Love, Chunibyo &amp; Other Delusions!: Chance Encounter... with Wicked Lor… 10/6/…
+## 6 K-on! the movie                                                         10/6/…</code></pre>
+<p>Intro: I chose this data because I do a lot of binge watching and I often listen to music, and I thought it would be cool to see how my data would look like all together. The netflix data contained the variables date and Title, and the spotify data had the variables endTime(which was time and date), artist name, track name, and ms played. I downloaded my data off of my Netflix and Spotify accounts and then uploaded them to R. Often times watching things or listening to music is my little escape (that I get way too carried away with). My first year I was all alone and I had moved to a new city so I did A LOT of binge watching. I would expect to see a lot of titles watched in a day for 2017 definitely, and for 2020 I would expect to have more songs listened to than titles watched because I got more into music as a &quot;coping&quot; mechanism, mostly because I did not have the energy to find new shows.</p>
+<pre class="r"><code>NetflixViewingHistory$Date &lt;- format(as.Date(NetflixViewingHistory$Date, format =&quot;%m/%d/%y&quot;),&quot;%Y-%m-%d&quot;)
+Streaming &lt;-Streaming %&gt;%separate(endTime, into = c(&quot;Date&quot;,&quot;endTime&quot;), sep = &quot; (?=[^ ]+$)&quot;)
+
+TtlStrm &lt;- Streaming %&gt;% full_join(NetflixViewingHistory)</code></pre>
+<pre><code>## Joining, by = &quot;Date&quot;</code></pre>
+<pre class="r"><code>head(TtlStrm)</code></pre>
+<pre><code>## # A tibble: 6 x 6
+##   Date       endTime  artistName     trackName       msPlayed Title
+##   &lt;chr&gt;      &lt;chr&gt;    &lt;chr&gt;          &lt;chr&gt;              &lt;dbl&gt; &lt;chr&gt;
+## 1 2019-10-11 23:24:00 Hiatus Kaiyote Swamp Thing        13802 &lt;NA&gt; 
+## 2 2019-10-12 21:38:00 Instupendo     Wisp               12751 &lt;NA&gt; 
+## 3 2019-10-13 15:50:00 Erykah Badu    Time&#39;s A Wastin   313677 &lt;NA&gt; 
+## 4 2019-10-13 15:53:00 6ix9ine        GUMMO             157643 &lt;NA&gt; 
+## 5 2019-10-13 15:57:00 Paramore       Still into You    216013 &lt;NA&gt; 
+## 6 2019-10-13 16:00:00 Marian Hill    I Want You        212493 &lt;NA&gt;</code></pre>
+<p>I did a full join because I did not want to lose any data. Streaming had 37,485 observations and NetflixViewingHistory had 2,640 observations. No observations were dropped, but some were duplicated.</p>
+<pre class="r"><code>TtlStrm&lt;- TtlStrm %&gt;% mutate(&#39;time(s)&#39; = msPlayed/1000)
+TtlStrm&lt;- TtlStrm %&gt;% arrange(Date)
+TtlStrm&lt;- TtlStrm%&gt;%separate(Title, into = c(&quot;Title&quot;,&quot;Season&quot;), sep = &quot;:&quot;)</code></pre>
+<pre><code>## Warning: Expected 2 pieces. Additional pieces discarded in 73903 rows [1, 2, 3,
+## 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, ...].</code></pre>
+<pre><code>## Warning: Expected 2 pieces. Missing pieces filled with `NA` in 4832 rows [21,
+## 78, 91, 92, 98, 99, 101, 105, 116, 147, 202, 276, 277, 278, 331, 336, 337, 339,
+## 340, 377, ...].</code></pre>
+<pre class="r"><code>head(TtlStrm)</code></pre>
+<pre><code>## # A tibble: 6 x 8
+##   Date       endTime artistName trackName msPlayed Title  Season      `time(s)`
+##   &lt;chr&gt;      &lt;chr&gt;   &lt;chr&gt;      &lt;chr&gt;        &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;           &lt;dbl&gt;
+## 1 2016-12-06 &lt;NA&gt;    &lt;NA&gt;       &lt;NA&gt;            NA Scream &quot; Season 2&quot;        NA
+## 2 2016-12-06 &lt;NA&gt;    &lt;NA&gt;       &lt;NA&gt;            NA Scream &quot; Season 2&quot;        NA
+## 3 2016-12-07 &lt;NA&gt;    &lt;NA&gt;       &lt;NA&gt;            NA Scream &quot; Season 2&quot;        NA
+## 4 2016-12-07 &lt;NA&gt;    &lt;NA&gt;       &lt;NA&gt;            NA Scream &quot; Season 2&quot;        NA
+## 5 2016-12-07 &lt;NA&gt;    &lt;NA&gt;       &lt;NA&gt;            NA Scream &quot; Season 2&quot;        NA
+## 6 2016-12-07 &lt;NA&gt;    &lt;NA&gt;       &lt;NA&gt;            NA Scream &quot; Season 2&quot;        NA</code></pre>
+<pre class="r"><code>TtlStrm %&gt;% filter(Date == &quot;2020-09-08&quot;) </code></pre>
+<pre><code>## # A tibble: 88 x 8
+##    Date    endTime  artistName     trackName    msPlayed Title Season  `time(s)`
+##    &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;          &lt;chr&gt;           &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;       &lt;dbl&gt;
+##  1 2020-0… 00:05:00 Francisco Tár… Gran vals       61440 Glory  &lt;NA&gt;       61.4 
+##  2 2020-0… 00:05:00 Francisco Tár… Gran vals       61440 Dyna… &quot; Seas…     61.4 
+##  3 2020-0… 00:05:00 Francisco Tár… Gran vals       61440 Dyna… &quot; Seas…     61.4 
+##  4 2020-0… 00:05:00 Francisco Tár… Gran vals       61440 Dyna… &quot; Seas…     61.4 
+##  5 2020-0… 01:36:00 The Joe Rogan… #1465 - Tim…  4596212 Glory  &lt;NA&gt;     4596.  
+##  6 2020-0… 01:36:00 The Joe Rogan… #1465 - Tim…  4596212 Dyna… &quot; Seas…   4596.  
+##  7 2020-0… 01:36:00 The Joe Rogan… #1465 - Tim…  4596212 Dyna… &quot; Seas…   4596.  
+##  8 2020-0… 01:36:00 The Joe Rogan… #1465 - Tim…  4596212 Dyna… &quot; Seas…   4596.  
+##  9 2020-0… 04:11:00 Modest Mouse   Gravity Rid…     6345 Glory  &lt;NA&gt;        6.34
+## 10 2020-0… 04:11:00 Modest Mouse   Gravity Rid…     6345 Dyna… &quot; Seas…      6.34
+## # … with 78 more rows</code></pre>
+<pre class="r"><code>TtlStrm %&gt;% group_by(artistName) %&gt;% count(sort=T)</code></pre>
+<pre><code>## # A tibble: 2,613 x 2
+## # Groups:   artistName [2,613]
+##    artistName              n
+##    &lt;chr&gt;               &lt;int&gt;
+##  1 Mac DeMarco          3616
+##  2 Tyler, The Creator   3050
+##  3 Kali Uchis           2570
+##  4 Taylor Swift         2302
+##  5 Ariana Grande        2003
+##  6 &lt;NA&gt;                 1933
+##  7 Khruangbin           1705
+##  8 Panic! At The Disco  1683
+##  9 Fieh                 1653
+## 10 The Black Keys       1592
+## # … with 2,603 more rows</code></pre>
+<pre class="r"><code>TtlStrm %&gt;% group_by(Title) %&gt;% count(sort=T)</code></pre>
+<pre><code>## # A tibble: 331 x 2
+## # Groups:   Title [331]
+##    Title                       n
+##    &lt;chr&gt;                   &lt;int&gt;
+##  1 &lt;NA&gt;                    25104
+##  2 New Girl                18336
+##  3 Money Heist              5003
+##  4 Dynasty                  4491
+##  5 DEATH NOTE               4325
+##  6 Neon Genesis Evangelion  3917
+##  7 Toradora!                3568
+##  8 K-On!                    2954
+##  9 Dear White People        2878
+## 10 Elite                    2494
+## # … with 321 more rows</code></pre>
+<pre class="r"><code>TtlStrm %&gt;% group_by(Date) %&gt;% count(sort=T)</code></pre>
+<pre><code>## # A tibble: 754 x 2
+## # Groups:   Date [754]
+##    Date           n
+##    &lt;chr&gt;      &lt;int&gt;
+##  1 2020-06-08  3978
+##  2 2020-06-15  3045
+##  3 2020-06-17  2992
+##  4 2020-05-11  2944
+##  5 2020-06-12  2904
+##  6 2020-08-10  2607
+##  7 2020-06-20  2379
+##  8 2020-06-14  2035
+##  9 2020-06-16  1900
+## 10 2020-06-13  1887
+## # … with 744 more rows</code></pre>
+<p>My top artist overall was Mac DeMarco, my most watched show was New Girl, and the day with the most activity was June 8, 2020.</p>
 
             
         <hr>         <div class="related-posts">
